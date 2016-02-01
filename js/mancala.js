@@ -9,22 +9,24 @@ var board = [4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 0],
 
 
 
-
+//phase 1
 var move = function(seedIndex) {
   //transfers all seeds inside pit to your hand
     seedsInHand += board[seedIndex];
     board[seedIndex] = 0;
-
+    //phase 2 player adds 1 seed to each incoming pit from seedsInHand
+    for (var i = seedsInHand; i > 0; i--) {
+      seedIndex += 1;
+      board[seedIndex] += 1;
+    }
+    seedsInHand = 0;
   }
 
 
 
 
 
-// //phase 1
-// if (board[seedIndex] > 0) {
-//     seedsInHand += board[seedIndex];
-//     board[seedIndex] === 0;
+
 // //phase 2
 //     for (var i = seedsInHand; i > 0; i--) {
 //       seedIndex += 1;
