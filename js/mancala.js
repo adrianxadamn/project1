@@ -1,11 +1,9 @@
 console.log("linked!");
 
-var board = [4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 0],
-    gameOver = false,
-    player1,
-    player2,
-    turn = player1,
-    seedsInHand = 0;
+var board = [4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 0];
+var gameOver = false;
+var turn = "player2";
+var seedsInHand = 0;
 
 
 
@@ -14,14 +12,40 @@ var move = function(seedIndex) {
   //transfers all seeds inside pit to your hand
     seedsInHand += board[seedIndex];
     board[seedIndex] = 0;
+    console.log("seeds in hand =" + " " + seedsInHand);
     //phase 2 player adds 1 seed to each incoming pit from seedsInHand
-    for (var i = seedsInHand; i > 0; i--) {
-      seedIndex += 1;
+ for (var i = seedsInHand; i > 0; i--) {
+    seedIndex += 1;
+    if (seedIndex === 6 && turn === "player1") {
       board[seedIndex] += 1;
+      console.log("added 1 seed to player1's store")
+      console.log("seeds in hand =" + " " + (i - 1) )
+      console.log(board);
+    } else {
+    board[seedIndex] ++;
+    console.log("added 1 seed to pit")
+    console.log("seeds in hand =" + " " + (i - 1) )
+    console.log(board)
+  }
+
+
+
     }
     seedsInHand = 0;
   }
 
+
+
+  //     seedIndex += 1;
+  //     if (seedIndex === 6 && turn === "player1") {
+  //       board[seedIndex] += 1;
+  //     } else {
+  //       seedIndex = 7;
+  //       board[seedIndex] += 1;
+  //     }
+  //   }
+  //   seedsInHand = 0;
+  // }
 
 
 
