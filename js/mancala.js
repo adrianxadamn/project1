@@ -5,6 +5,10 @@ var gameOver = false;
 var turn = "player1";
 var seedsInHand = 0;
 
+
+
+
+
 render();
 // for (var i = 0; i < board.length; i++){
 //   pit[i].addEventListener("click", move)
@@ -18,17 +22,20 @@ render();
 
 console.log("it's " + turn + "'s turn")
 
+var pit = $("#pit")
+
 for (var i = 0; i < 14; i +=1) {
-    $("#pit" + i).on("click", function(evt) {
-      move(this)
+    $("#pit" + i).click(function(event) {
+      move(pit + i);
     });
-  }
+  };
+
 
 //phase 1
 var move = function(seedIndex) {
   //transfers all seeds inside pit to your hand
-  seedsInHand += this.board[seedIndex];
-  this.board[seedIndex] = 0;
+  seedsInHand += board[seedIndex];
+  board[seedIndex] = 0;
   console.log("seeds in hand =" + " " + seedsInHand);
   //phase 2 player adds 1 seed to each incoming pit from seedsInHand
   for (var i = seedsInHand; i > 0; i--) {
@@ -69,7 +76,7 @@ var move = function(seedIndex) {
   } seedsInHand = 0;
   console.log("seed index is " + seedIndex)
   render();
-  capture(seedIndex);
+  // capture(seedIndex);
   moveAgain(seedIndex);
 
 }
@@ -96,84 +103,84 @@ var moveAgain = function(seedIndex) {
 };
 
 
-var capture = function(seedIndex) {
-  if (turn === "player1") {
-    if (board[seedIndex] === board[0] && board[12] >= 1 ) {
-      board[6] += board[12] + 1;
-      board[12] = 0;
-      board[0] = 0;
-      console.log("you stole your opponents seeds!");
-      render();
-    } else if (board[seedIndex] === board[1] && board[11] >= 1 ) {
-      board[6] += board[11] + 1;
-      board[1] = 0;
-      board[11] = 0;
-      console.log("you stole your opponents seeds!");
-      render();
-    } else if (board[seedIndex] === board[2] && board[10] >= 1 ) {
-      board[6] += board[10] + 1;
-      board[2] = 0;
-      board[10] = 0;
-      console.log("you stole your opponents seeds!");
-      render();
-    } else if (board[seedIndex] === board[3] && board[9] >= 1 ) {
-      board[6] += board[9] + 1;
-      board[3] = 0;
-      board[9] = 0;
-      console.log("you stole your opponents seeds!");
-      render();
-    } else if (board[seedIndex] === board[4] && board[8] >= 1 ) {
-      board[6] += board[8] + 1;
-      board[4] = 0;
-      board[8] = 0;
-      console.log("you stole your opponents seeds!");
-      render();
-    } else if (board[seedIndex] === board[5] && board[7] >= 1 ) {
-      board[6] += board[7] + 1;
-      board[5] = 0;
-      board[7] = 0;
-      console.log("you stole your opponents seeds!");
-      render();
-} else if (turn === "player2") {
-    if (board[seedIndex] === board[7] && board[5] >= 1 ) {
-      board[13] += board[5] + 1;
-      board[7] = 0;
-      board[5] = 0;
-      console.log("you stole your opponents seeds!");
-      render();
-    } else if (board[seedIndex] === board[8] && board[4] >= 1 ) {
-      board[13] += board[4] + 1;
-      board[8] = 0;
-      board[4] = 0;
-      console.log("you stole your opponents seeds!");
-      render();
-    } else if (board[seedIndex] === board[9] && board[3] >= 1 ) {
-      board[13] += board[3] + 1;
-      board[9] = 0;
-      board[3] = 0;
-      console.log("you stole your opponents seeds!");
-      render();
-    } else if (board[seedIndex] === board[10] && board[2] >= 1 ) {
-      board[13] += board[2] + 1;
-      board[10] = 0;
-      board[2] = 0;
-      console.log("you stole your opponents seeds!");
-      render();
-    } else if (board[seedIndex] === board[11] && board[1] >= 1 ) {
-      board[13] += board[1] + 1;
-      board[11] = 0;
-      board[1] = 0;
-      console.log("you stole your opponents seeds!");
-      render();
-    } else if (board[seedIndex] === board[12] && board[0] >= 1 ) {
-      board[13] += board[0] + 1;
-      board[12] = 0;
-      board[0] = 0;
-      console.log("you stole your opponents seeds!");
-      render();
-    }}
-  }
-};
+// var capture = function(seedIndex) {
+//   if (turn === "player1") {
+//     if (board[seedIndex] === board[0] && board[12] >= 1 ) {
+//       board[6] += board[12] + 1;
+//       board[12] = 0;
+//       board[0] = 0;
+//       console.log("you stole your opponents seeds!");
+//       render();
+//     } else if (board[seedIndex] === board[1] && board[11] >= 1 ) {
+//       board[6] += board[11] + 1;
+//       board[1] = 0;
+//       board[11] = 0;
+//       console.log("you stole your opponents seeds!");
+//       render();
+//     } else if (board[seedIndex] === board[2] && board[10] >= 1 ) {
+//       board[6] += board[10] + 1;
+//       board[2] = 0;
+//       board[10] = 0;
+//       console.log("you stole your opponents seeds!");
+//       render();
+//     } else if (board[seedIndex] === board[3] && board[9] >= 1 ) {
+//       board[6] += board[9] + 1;
+//       board[3] = 0;
+//       board[9] = 0;
+//       console.log("you stole your opponents seeds!");
+//       render();
+//     } else if (board[seedIndex] === board[4] && board[8] >= 1 ) {
+//       board[6] += board[8] + 1;
+//       board[4] = 0;
+//       board[8] = 0;
+//       console.log("you stole your opponents seeds!");
+//       render();
+//     } else if (board[seedIndex] === board[5] && board[7] >= 1 ) {
+//       board[6] += board[7] + 1;
+//       board[5] = 0;
+//       board[7] = 0;
+//       console.log("you stole your opponents seeds!");
+//       render();
+// } else if (turn === "player2") {
+//     if (board[seedIndex] === board[7] && board[5] >= 1 ) {
+//       board[13] += board[5] + 1;
+//       board[7] = 0;
+//       board[5] = 0;
+//       console.log("you stole your opponents seeds!");
+//       render();
+//     } else if (board[seedIndex] === board[8] && board[4] >= 1 ) {
+//       board[13] += board[4] + 1;
+//       board[8] = 0;
+//       board[4] = 0;
+//       console.log("you stole your opponents seeds!");
+//       render();
+//     } else if (board[seedIndex] === board[9] && board[3] >= 1 ) {
+//       board[13] += board[3] + 1;
+//       board[9] = 0;
+//       board[3] = 0;
+//       console.log("you stole your opponents seeds!");
+//       render();
+//     } else if (board[seedIndex] === board[10] && board[2] >= 1 ) {
+//       board[13] += board[2] + 1;
+//       board[10] = 0;
+//       board[2] = 0;
+//       console.log("you stole your opponents seeds!");
+//       render();
+//     } else if (board[seedIndex] === board[11] && board[1] >= 1 ) {
+//       board[13] += board[1] + 1;
+//       board[11] = 0;
+//       board[1] = 0;
+//       console.log("you stole your opponents seeds!");
+//       render();
+//     } else if (board[seedIndex] === board[12] && board[0] >= 1 ) {
+//       board[13] += board[0] + 1;
+//       board[12] = 0;
+//       board[0] = 0;
+//       console.log("you stole your opponents seeds!");
+//       render();
+//     }}
+//   }
+// };
 
 
 
