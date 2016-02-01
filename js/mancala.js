@@ -31,63 +31,25 @@ var move = function(seedIndex) {
       console.log("added 1 seed to pit");
       console.log("seeds in hand =" + " " + (i - 1));
       console.log(board);
+    } else if (seedIndex === 13 && turn === "player1") {
+      seedIndex = 0;
+      board[seedIndex] += 1;
+      console.log("added 1 seed to pit");
+      console.log("seeds in hand =" + " " + (i - 1));
+      console.log(board);
+    } else if (seedIndex === 13 && turn === "player2") {
+      board[seedIndex] += 1;
+      console.log("added 1 seed to player2's store");
+      console.log("seeds in hand =" + " " + (i - 1));
+      console.log(board);
+    } else {
+      board[seedIndex] ++;
+      console.log("added 1 seed to pit");
+      console.log("seeds in hand =" + " " + (i - 1) );
+      console.log(board);
     }
-
-
-      else {
-    board[seedIndex] ++;
-    console.log("added 1 seed to pit")
-    console.log("seeds in hand =" + " " + (i - 1) )
-    console.log(board)
-  }
-
-
-
 
     }
     seedsInHand = 0;
   }
-
-
-
-  //     seedIndex += 1;
-  //     if (seedIndex === 6 && turn === "player1") {
-  //       board[seedIndex] += 1;
-  //     } else {
-  //       seedIndex = 7;
-  //       board[seedIndex] += 1;
-  //     }
-  //   }
-  //   seedsInHand = 0;
-  // }
-
-
-
-
-
-// //phase 2
-//     for (var i = seedsInHand; i > 0; i--) {
-//       seedIndex += 1;
-// //phase 2.1
-//       if (seedIndex === 6) {
-//         if (turn === player1) {
-//           board[seedIndex] += 1;
-//           seedIndex += 1;
-//         } else {
-//           seedIndex = 7;
-//         }
-//     } if (seedIndex === 13) {
-//         if (turn === player1) {
-//           seedIndex = 0;
-//         } else {
-//           board[seedIndex] += 1
-//           seedIndex += 1;
-//         }
-//     }
-//   }}};
-// //phase 3
-// //     if ()
-
-
-
 
