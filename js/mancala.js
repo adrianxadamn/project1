@@ -23,13 +23,13 @@ render();
 
 console.log("it's " + turn + "'s turn")
 
-var pit = $("#pit")
+// var pit = $("#pit")
 
-for (var i = 0; i < 14; i +=1) {
-    $("#pit" + i).click(function(event) {
-      move(pit + i);
-    });
-  };
+// for (var i = 0; i < 14; i +=1) {
+//     $("#pit" + i).click(function(event) {
+//       move(pit + i);
+//     });
+//   };
 
 
 //phase 1
@@ -40,9 +40,6 @@ var move = function(seedIndex) {
   console.log("seeds in hand =" + " " + seedsInHand);
   //phase 2 player adds 1 seed to each incoming pit from seedsInHand
   for (var i = seedsInHand; i > 0; i--) {
-
-setTimeout(function() {
-
     if (seedIndex === 13) {
       seedIndex = 0;
     } else {
@@ -50,6 +47,7 @@ setTimeout(function() {
     }
     if (seedIndex === 6 && turn === "player1") {
       board[seedIndex] += 1;
+      playCollectSound();
       console.log("added 1 seed to player1's store");
       console.log("seeds in hand =" + " " + (i - 1));
       console.log(board);
@@ -67,6 +65,7 @@ setTimeout(function() {
         console.log(board);
     } else if (seedIndex === 13 && turn === "player2") {
         board[seedIndex] += 1;
+        playCollectSound();
         console.log("added 1 seed to player2's store");
         console.log("seeds in hand =" + " " + (i - 1));
         console.log(board);
@@ -75,15 +74,14 @@ setTimeout(function() {
         console.log("added 1 seed to pit");
         console.log("seeds in hand =" + " " + (i - 1) );
         console.log(board);
-    } render(); }, 2000)
-
+    }
   }
+  render();
   seedsInHand = 0;
   console.log("this should be last")
   console.log("seed index is " + seedIndex)
   // capture(seedIndex);
   moveAgain(seedIndex);
-
 }
 
 
@@ -193,4 +191,18 @@ function render() {
   for (var i = 0; i < 14; i +=1) {
     $("#pit" + i).html(board[i]);
   }
+}
+
+
+var audio = $("#hover-cells")[0];
+var score = $("#score")[0];
+
+//play sounds when you hover pits
+$(".cell").mouseenter(function() {
+  audio.play();
+})
+
+//play sounds
+var playCollectSound = function() {
+  score.play();
 }
