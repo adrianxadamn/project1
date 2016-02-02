@@ -1,6 +1,7 @@
+
 console.log("linked!");
 
-board = [0, 0, 0, 0, 0, 0, 0, 4, 4, 4, 4, 2, 0, 0]
+board = [4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 0]
 var gameOver = false;
 var turn = "player1";
 var seedsInHand = 0;
@@ -39,6 +40,9 @@ var move = function(seedIndex) {
   console.log("seeds in hand =" + " " + seedsInHand);
   //phase 2 player adds 1 seed to each incoming pit from seedsInHand
   for (var i = seedsInHand; i > 0; i--) {
+
+setTimeout(function() {
+
     if (seedIndex === 13) {
       seedIndex = 0;
     } else {
@@ -71,11 +75,12 @@ var move = function(seedIndex) {
         console.log("added 1 seed to pit");
         console.log("seeds in hand =" + " " + (i - 1) );
         console.log(board);
-    }
+    } render(); }, 2000)
 
-  } seedsInHand = 0;
+  }
+  seedsInHand = 0;
+  console.log("this should be last")
   console.log("seed index is " + seedIndex)
-  render();
   // capture(seedIndex);
   moveAgain(seedIndex);
 
@@ -189,5 +194,3 @@ function render() {
     $("#pit" + i).html(board[i]);
   }
 }
-
-

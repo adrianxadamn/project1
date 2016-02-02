@@ -5,55 +5,73 @@ body {
 .wrapper {
   margin: 3px auto;
   border: 7px solid teal;
+  width: 794px;
+}
 
+.row2 {
+  height: 194px;
+}
+
+.text {
+  position: relative;
+  left: 23px;
 }
 
 .store1 {
   margin: 10px 10px;
   border: 7px solid teal;
   padding: 15px;
-  /*height: 85px;
-  width: 65px;*/
-  height:40px;
-  width: 20px;
+  height: 85px;
+  width: 65px;
+/*  height:40px;
+  width: 20px;*/
   background-color: teal;
   color: black;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 60px;
   background-clip: content-box;
-  float: right;
+  text-align: center;
+  font-family: 'Bangers', cursive;
+  display: inline-block;
+  position: relative;
+  left: 665px;
+  bottom: 190px;
 }
 
 .store2 {
    margin: 10px 10px;
   border: 7px solid teal;
   padding: 15px;
-  /*height: 85px;
-  width: 65px;*/
-  height:40px;
-  width: 20px;
+  height: 85px;
+  width: 65px;
+ /* height:40px;
+  width: 20px;*/
   background-color: teal;
   color: black;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 60px;
   background-clip: content-box;
   float: left;
+  text-align: center;
+  font-family: 'Bangers', cursive;
 }
 
 .cell {
   margin: 10px 10px;
   border: 7px solid teal;
   padding: 15px;
- /* height: 85px;
-  width: 65px;*/
-  height:40px;
-  width: 20px;
+  height: 85px;
+  width: 65px;
+/*  height:40px;
+  width: 20px;*/
   background-color: teal;
   color: black;
   display: inline-block;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 60px;
   background-clip: content-box;
+  text-align: center;
+  font-family: 'Bangers', cursive;
 }
 
 .cell:hover {
@@ -67,6 +85,8 @@ span {
   font-size: 60px;
   text-align: center;
   font-family: 'Bangers', cursive;
+  border: 7px solid teal;
+  padding: 0px 90px;
 
 }
 
@@ -78,6 +98,11 @@ h1 {
   font-style: italic;
 }
 
-.row1, .row2, .row3 {
+/*.row1, .row2, .row3 {
   text-align: center;
+}*/
+
+/*.text {
+  text-align:center;
 }
+*/
