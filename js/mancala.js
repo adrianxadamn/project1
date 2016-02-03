@@ -1,32 +1,47 @@
-var board = [2, 2, 2, 2, 2, 2, 0, 2, 2, 2, 2, 2, 2, 0];
+var board = [4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 0];
 var gameOver = false;
 var turn = "player1";
 var seedsInHand = 0;
-
+var turnBox = $("#turn");
 render();
 
-//manipulates pit value
-var pit = $("#pit")
-//manipulates turnbox from html
-var turnBox = $("#turn");
 //restarts Game
+/////////////
 $("#newGameId").on("click", function(event) {
   board = [4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 0];
   turn = "player1"
-  turnBox.html("Turn: Player 1")
+  turnBox.html("Turn: Player 1").css({color: "teal"}).css({border: "7px solid teal"})
   render();
 });
 
+
 //triggers move function when you click a pit
+////////////////////////////
 $(".cell").on("click", function(event) {
   event.preventDefault();
   var seedIndex = parseInt(event.target.id.slice(3));
-  move(seedIndex);
+  invalidMove(seedIndex);
 });
 
+
+// checks if move is invalid
+///////////////////////
+var invalidMove = function (seedIndex){
+  if (turn === "player1" && seedIndex < 6) {
+    move(seedIndex);
+  } else if (turn === "player2" && seedIndex > 6) {
+    move(seedIndex);
+  } else {
+    playWrongMoveSound();
+    alert("invalid move!")
+  }
+}
+
+
 //phase 1
+/////////
 var move = function(seedIndex) {
-  //transfers all seeds inside pit to your hand
+    //transfers all seeds inside pit to your hand
   seedsInHand += board[seedIndex];
   board[seedIndex] = 0;
   console.log("seeds in hand =" + " " + seedsInHand);
@@ -77,10 +92,12 @@ var move = function(seedIndex) {
 }
 
 //determines if the player can move again
+///////////////////////////////////
 var moveAgain = function(seedIndex) {
   if (turn === "player1") {
     if (seedIndex === 6) {
       turn = "player1";
+      playGoAgain();
       console.log(turn + " moves again")
       getWinner();
     } else {
@@ -92,6 +109,7 @@ var moveAgain = function(seedIndex) {
   } else if (turn ==="player2") {
       if (seedIndex === 13) {
         turn = "player2";
+        playGoAgain();
         console.log(turn + " moves again")
         getWinner();
       } else {
@@ -104,8 +122,8 @@ var moveAgain = function(seedIndex) {
 };
 
 //checks if the player can capture the opponent's seeds
+//////////////////////////////
 var capture = function(seedIndex) {
-  console.log(seedIndex + "is the seedIndex in capture function")
   if (turn === "player1") {
     if (12 - 12 === seedIndex && board[seedIndex] === 1 && board[12] >= 1 ) {
       board[6] += board[12] + 1;
@@ -144,7 +162,6 @@ var capture = function(seedIndex) {
       playCollectSound();
       render();
 }} else if (turn === "player2") {
-  console.log("pls work")
     if (12 - 5 === seedIndex && board[seedIndex] === 1 && board[5] >= 1 ) {
       board[13] += board[5] + 1;
       board[7] = 0;
@@ -184,6 +201,9 @@ var capture = function(seedIndex) {
     }}
   };
 
+
+//getWinner functions
+/////////////////////
 function getWinner(){
   if (board[0] + board[1] + board[2] + board[3] + board[4] + board[5] === 0) {
     board[13] += board[7] + board[8] + board[9] + board[10] + board[11] + board[12];
@@ -211,10 +231,13 @@ function getWinner(){
 function winnerIs(){
   if (board[6] >= board[13]) {
     turnBox.html("Player 1 Wins!").css({color: "yellow"}).css({border: "7px solid yellow"})
-    alert("Player 1 Wins!")
+    playWinnerSound();
+    // alert("Player 1 Wins!");
   } else {
     turnBox.html("Player 2 Wins!").css({color: "yellow"}).css({border: "7px solid yellow"})
-    alert("Player 2 Wins!")
+    playWinnerSound();
+    // alert("Player 2 Wins!");
+
   }
 }
 
@@ -225,18 +248,35 @@ function render() {
 }
 
 //audio manipulation
+///////////////////////////////
 var audio = $("#hover-cells")[0];
 var score = $("#score")[0];
 var song = $("#song")[0];
+var kO = $("#winner")[0];
+var oneUp = $("#goAgain")[0];
+var wrongMove = $("#wrongMove")[0];
 
-//play sounds when you hover pits
+
+//play sounds when you trigger a specific type of move
+////////////////////////////////
 $(".cell").mouseenter(function() {
   audio.play();
 })
 
-//play sounds
 var playCollectSound = function() {
   score.play();
+}
+
+var playGoAgain = function() {
+  oneUp.play();
+}
+
+var playWinnerSound = function () {
+  kO.play();
+}
+
+var playWrongMoveSound = function() {
+  wrongMove.play();
 }
 
 $("#pauseMusic").on("click", function(){
