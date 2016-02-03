@@ -10,20 +10,17 @@ var pit = $("#pit")
 //manipulates turnbox from html
 var turnBox = $("#turn");
 //restarts Game
-$(".newGameClass").on("click", function(event) {
+$("#newGameId").on("click", function(event) {
   board = [4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 0];
   turn = "player1"
   turnBox.html("Turn: Player 1")
   render();
 });
 
-
-
-
+//triggers move function when you click a pit
 $(".cell").on("click", function(event) {
   event.preventDefault();
   var seedIndex = parseInt(event.target.id.slice(3));
-  console.log(seedIndex);
   move(seedIndex);
 });
 
@@ -79,7 +76,7 @@ var move = function(seedIndex) {
   moveAgain(seedIndex);
 }
 
-
+//determines if the player can move again
 var moveAgain = function(seedIndex) {
   if (turn === "player1") {
     if (seedIndex === 6) {
@@ -106,7 +103,7 @@ var moveAgain = function(seedIndex) {
   }
 };
 
-
+//checks if the player can capture the opponent's seeds
 var capture = function(seedIndex) {
   console.log(seedIndex + "is the seedIndex in capture function")
   if (turn === "player1") {
@@ -187,7 +184,6 @@ var capture = function(seedIndex) {
     }}
   };
 
-
 function getWinner(){
   if (board[0] + board[1] + board[2] + board[3] + board[4] + board[5] === 0) {
     board[13] += board[7] + board[8] + board[9] + board[10] + board[11] + board[12];
@@ -214,16 +210,13 @@ function getWinner(){
 
 function winnerIs(){
   if (board[6] >= board[13]) {
-    turnBox.html("Winner is Player 1!")
-    alert("Winner is Player1!")
+    turnBox.html("Player 1 Wins!").css({color: "yellow"}).css({border: "7px solid yellow"})
+    alert("Player 1 Wins!")
   } else {
-    ("Winner is Player 2!")
-    alert("Winner is Player2!")
+    turnBox.html("Player 2 Wins!").css({color: "yellow"}).css({border: "7px solid yellow"})
+    alert("Player 2 Wins!")
   }
 }
-
-
-
 
 function render() {
   for (var i = 0; i < 14; i +=1) {
@@ -231,7 +224,7 @@ function render() {
   }
 }
 
-
+//audio manipulation
 var audio = $("#hover-cells")[0];
 var score = $("#score")[0];
 var song = $("#song")[0];
@@ -246,6 +239,12 @@ var playCollectSound = function() {
   score.play();
 }
 
-var playSong = function() {
-  song.play();
-}
+$("#pauseMusic").on("click", function(){
+  if ($("#pauseMusic").html() === "Music: ON" ) {
+   song.pause();
+   $("#pauseMusic").html("Paused");
+  } else {
+    song.play();
+    $("#pauseMusic").html("Music: ON");
+  }
+})

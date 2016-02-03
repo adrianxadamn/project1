@@ -1,5 +1,7 @@
 body {
-  background-color: black;
+/*  background-color: black;*/
+background-image: url(../images/7.jpg);
+background-repeat: repeat-x;
 }
 
 .wrapper {
@@ -24,7 +26,7 @@ body {
   display: inline-block;
   position: relative;
   left: 665px;
-  bottom: 190px;
+  bottom: 141px;
 }
 
 .store2 {
@@ -80,8 +82,8 @@ span {
   text-align: center;
   font-family: 'Bangers', cursive;
   border: 7px solid teal;
-  padding: 0px 90px;
-
+  padding: 0px 53px;
+  margin-left: 46px;
 }
 
 h1 {
@@ -96,15 +98,32 @@ h1:hover {
   color: yellow
 }
 
+.newGameClass {
+  text-align: center;
+}
+
 #newGameId {
   margin: 3px auto;
   position: relative;
-  left: 308px;
-  top: 50px
+  left: -47px;
 }
 
 #newGameId:hover {
   background-color: yellow;
   border-color: yellow ;
   box-shadow: 0px 0px 100px #fff;
+}
+
+#pauseMusic {
+  margin: 3px auto;
+  position: relative;
+  left: 23px;
+
+}
+
+#pauseMusic:hover{
+  background-color: yellow;
+  border-color: yellow ;
+  box-shadow: 0px 0px 100px #fff;
+}
 
