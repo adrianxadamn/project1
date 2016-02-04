@@ -21,11 +21,11 @@ $("#newGameId").on("click", function(event) {
 function changeHoverColor() {
 if (turn === "player1") {
   $(".cell2").off('mouseenter mouseleave');
-  $(".cell2").css("background-color", "teal").css({border: "7px solid teal"})
+  $(".cell2").css("background-color", "teal").css({border: "7px solid teal"}).css("box-shadow", "0px 0px 0px")
   playerOneHover();
 } else if (turn === "player2"){
   $(".cell1").off('mouseenter mouseleave');
-  $(".cell1").css("background-color", "teal").css({border: "7px solid teal"})
+  $(".cell1").css("background-color", "teal").css({border: "7px solid teal"}).css("box-shadow", "0px 0px 0px")
   playerTwoHover();
 }};
 
@@ -96,6 +96,7 @@ function move(seedIndex, seedNum, cb) {
     }
     if (seedIndex === 6 && turn === "player1") {
       board[seedIndex] += 1;
+      $(".points1").html("+1").fadeIn("slow").fadeOut("slow");
       playCollectSound();
     } else if (seedIndex === 6 && turn === "player2") {
         seedIndex = 7;
@@ -105,6 +106,7 @@ function move(seedIndex, seedNum, cb) {
         board[seedIndex] += 1;
     } else if (seedIndex === 13 && turn === "player2") {
         board[seedIndex] += 1;
+        $(".points2").html("+1").fadeIn("slow").fadeOut("slow");
         playCollectSound();
     } else {
         board[seedIndex] ++;
@@ -164,36 +166,42 @@ var capture = function(seedIndex) {
   if (turn === "player1") {
     if (12 - 12 === seedIndex && board[seedIndex] === 1 && board[12] >= 1 ) {
       board[6] += board[12] + 1;
+      $(".points1").html("+" + (board[12] + 1)).fadeIn("slow").fadeOut("slow");
       board[12] = 0;
       board[0] = 0;
       playCollectSound();
       render();
     } else if (12 - 11 === seedIndex && board[seedIndex] === 1 && board[11] >= 1 ) {
       board[6] += board[11] + 1;
+      $(".points1").html("+" + (board[11] + 1)).fadeIn("slow").fadeOut("slow");
       board[1] = 0;
       board[11] = 0;
       playCollectSound();
       render();
     } else if (12 - 10 === seedIndex && board[seedIndex] === 1 && board[10] >= 1 ) {
       board[6] += board[10] + 1;
+      $(".points1").html("+" + (board[10] + 1)).fadeIn("slow").fadeOut("slow");
       board[2] = 0;
       board[10] = 0;
       playCollectSound();
       render();
     } else if (12 - 9 === seedIndex && board[seedIndex] === 1 && board[9] >= 1 ) {
       board[6] += board[9] + 1;
+      $(".points1").html("+" + (board[9] + 1)).fadeIn("slow").fadeOut("slow");
       board[3] = 0;
       board[9] = 0;
       playCollectSound();
       render();
     } else if (12 - 8 === seedIndex && board[seedIndex] === 1 && board[8] >= 1 ) {
       board[6] += board[8] + 1;
+      $(".points1").html("+" + (board[8] + 1)).fadeIn("slow").fadeOut("slow");
       board[4] = 0;
       board[8] = 0;
       playCollectSound();
       render();
     } else if (12 - 7 === seedIndex && board[seedIndex] === 1 && board[7] >= 1 ) {
       board[6] += board[7] + 1;
+      $(".points1").html("+" + (board[7] + 1)).fadeIn("slow").fadeOut("slow");
       board[5] = 0;
       board[7] = 0;
       playCollectSound();
@@ -201,36 +209,42 @@ var capture = function(seedIndex) {
 }} else if (turn === "player2") {
     if (12 - 5 === seedIndex && board[seedIndex] === 1 && board[5] >= 1 ) {
       board[13] += board[5] + 1;
+      $(".points2").html("+" + (board[5] + 1)).fadeIn("slow").fadeOut("slow");
       board[7] = 0;
       board[5] = 0;
       playCollectSound();
       render();
     } else if (12 - 4 === seedIndex && board[seedIndex] === 1 && board[4] >= 1 ) {
       board[13] += board[4] + 1;
+      $(".points2").html("+" + (board[4] + 1)).fadeIn("slow").fadeOut("slow");
       board[8] = 0;
       board[4] = 0;
       playCollectSound();
       render();
     } else if (12 - 3 === seedIndex && board[seedIndex] === 1 && board[3] >= 1 ) {
       board[13] += board[3] + 1;
+      $(".points2").html("+" + (board[3] + 1)).fadeIn("slow").fadeOut("slow");
       board[9] = 0;
       board[3] = 0;
       playCollectSound();
       render();
     } else if (12 - 2 === seedIndex && board[seedIndex] === 1 && board[2] >= 1 ) {
       board[13] += board[2] + 1;
+      $(".points2").html("+" + (board[2] + 1)).fadeIn("slow").fadeOut("slow");
       board[10] = 0;
       board[2] = 0;
       playCollectSound();
       render();
     } else if (12 - 1 === seedIndex && board[seedIndex] === 1 && board[1] >= 1 ) {
       board[13] += board[1] + 1;
+      $(".points2").html("+" + (board[1] + 1)).fadeIn("slow").fadeOut("slow");
       board[11] = 0;
       board[1] = 0;
       playCollectSound();
       render();
     } else if (12 - 0 === seedIndex && board[seedIndex] === 1 && board[0] >= 1 ) {
       board[13] += board[0] + 1;
+      $(".points2").html("+" + (board[0] + 1)).fadeIn("slow").fadeOut("slow");
       board[12] = 0;
       board[0] = 0;
       playCollectSound();
