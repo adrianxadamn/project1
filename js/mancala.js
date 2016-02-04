@@ -2,51 +2,91 @@ var board = [4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 0];
 var gameOver = false;
 var turn = "player1";
 var seedsInHand = 0;
+var beforeClick = true;
 var turnBox = $("#turn");
 render();
+playerOneHover();
+turnBox.css({color: "yellow"})
 
 //restarts Game
 /////////////
 $("#newGameId").on("click", function(event) {
   board = [4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 0];
   turn = "player1"
-  turnBox.html("Turn: Player 1").css({color: "teal"}).css({border: "7px solid teal"})
+  turnBox.html("Turn: Player 1").css({color: "yellow"}).css({border: "7px solid teal"})
+  clearTimeout(move);
   render();
 });
 
+function changeHoverColor() {
+if (turn === "player1") {
+  $(".cell2").off('mouseenter mouseleave');
+  $(".cell2").css("background-color", "teal").css({border: "7px solid teal"})
+  playerOneHover();
+} else if (turn === "player2"){
+  $(".cell1").off('mouseenter mouseleave');
+  $(".cell1").css("background-color", "teal").css({border: "7px solid teal"})
+  playerTwoHover();
+}};
+
+function playerOneHover() {
+  $(".cell1").hover(function(){
+    $(this).css("background-color", "yellow").css({border: "7px solid yellow"}).css("box-shadow", "0px 0px 100px #fff")
+  }, function () {
+    $(this).css("background-color", "teal").css({border: "7px solid teal"}).css("box-shadow", "0px 0px 0px")
+  });
+}
+function playerTwoHover() {
+  $(".cell2").hover(function(){
+    $(this).css("background-color", "red").css({border: "7px solid red"}).css("box-shadow", "0px 0px 100px #fff")
+  }, function () {
+    $(this).css("background-color", "teal").css({border: "7px solid teal"}).css("box-shadow", "0px 0px 0px")
+  });
+}
 
 //triggers move function when you click a pit
 ////////////////////////////
-$(".cell").on("click", function(event) {
+$(".cell1").on("click", function(event) {
   event.preventDefault();
   var seedIndex = parseInt(event.target.id.slice(3));
   invalidMove(seedIndex);
 });
 
+$(".cell2").on("click", function(event) {
+  event.preventDefault();
+  var seedIndex = parseInt(event.target.id.slice(3));
+  invalidMove(seedIndex);
+});
 
 // checks if move is invalid
 ///////////////////////
 var invalidMove = function (seedIndex){
   if (turn === "player1" && seedIndex < 6) {
-    move(seedIndex);
+    if (board[seedIndex] >= 1) {
+      move(seedIndex, board[seedIndex], afterMove);
+    } else {
+      alert("invalid move!")
+    }
   } else if (turn === "player2" && seedIndex > 6) {
-    move(seedIndex);
+      if (board[seedIndex] >= 1) {
+        move(seedIndex, board[seedIndex], afterMove);
+      } else {
+        alert("invalid move!")
+      }
   } else {
     playWrongMoveSound();
     alert("invalid move!")
   }
 }
 
-
-//phase 1
-/////////
-var move = function(seedIndex) {
-    //transfers all seeds inside pit to your hand
-  seedsInHand += board[seedIndex];
-  board[seedIndex] = 0;
-  console.log("seeds in hand =" + " " + seedsInHand);
-  //phase 2 player adds 1 seed to each incoming pit from seedsInHand
-  for (var i = seedsInHand; i > 0; i--) {
+//move function
+//////////////////////////
+function move(seedIndex, seedNum, cb) {
+  if (beforeClick === true) {
+    board[seedIndex] = 0;
+    beforeClick = false;
+  }
+  setTimeout(function() {
     if (seedIndex === 13) {
       seedIndex = 0;
     } else {
@@ -55,44 +95,37 @@ var move = function(seedIndex) {
     if (seedIndex === 6 && turn === "player1") {
       board[seedIndex] += 1;
       playCollectSound();
-      console.log("added 1 seed to player1's store");
-      console.log("seeds in hand =" + " " + (i - 1));
-      console.log(board);
     } else if (seedIndex === 6 && turn === "player2") {
         seedIndex = 7;
         board[seedIndex] += 1;
-        console.log("added 1 seed to pit");
-        console.log("seeds in hand =" + " " + (i - 1));
-        console.log(board);
     } else if (seedIndex === 13 && turn === "player1") {
         seedIndex = 0;
         board[seedIndex] += 1;
-        console.log("added 1 seed to pit");
-        console.log("seeds in hand =" + " " + (i - 1));
-        console.log(board);
     } else if (seedIndex === 13 && turn === "player2") {
         board[seedIndex] += 1;
         playCollectSound();
-        console.log("added 1 seed to player2's store");
-        console.log("seeds in hand =" + " " + (i - 1));
-        console.log(board);
     } else {
         board[seedIndex] ++;
-        console.log("added 1 seed to pit");
-        console.log("seeds in hand =" + " " + (i - 1) );
-        console.log(board);
     }
-  }
-  render();
-  seedsInHand = 0;
-  console.log("this should be last")
-  console.log("seed index is " + seedIndex)
+    seedNum--;
+    render();
+    //recursion function
+    if (seedNum === 0) {
+      cb(seedIndex)
+    } else {
+      move(seedIndex, seedNum, cb);
+    }
+  }, 200)
+}
+
+//this function will run once move has ended
+////////////////////////
+function afterMove(seedIndex) {
+  beforeClick = true;
   capture(seedIndex);
   moveAgain(seedIndex);
 }
 
-//determines if the player can move again
-///////////////////////////////////
 var moveAgain = function(seedIndex) {
   if (turn === "player1") {
     if (seedIndex === 6) {
@@ -102,7 +135,8 @@ var moveAgain = function(seedIndex) {
       getWinner();
     } else {
       turn = "player2";
-      turnBox.html("Turn: Player 2")
+      changeHoverColor();
+      turnBox.html("Turn: Player 2").css({color: "red"})
       console.log("it's " + turn + "'s turn")
       getWinner();
     }
@@ -114,7 +148,8 @@ var moveAgain = function(seedIndex) {
         getWinner();
       } else {
         turn = "player1";
-        turnBox.html("Turn: Player 1")
+        changeHoverColor();
+        turnBox.html("Turn: Player 1").css({color: "yellow"})
         console.log("it's " + turn + "'s turn");
         getWinner();
       }
@@ -201,7 +236,6 @@ var capture = function(seedIndex) {
     }}
   };
 
-
 //getWinner functions
 /////////////////////
 function getWinner(){
@@ -232,20 +266,17 @@ function winnerIs(){
   if (board[6] >= board[13]) {
     turnBox.html("Player 1 Wins!").css({color: "yellow"}).css({border: "7px solid yellow"})
     playWinnerSound();
-    // alert("Player 1 Wins!");
   } else {
     turnBox.html("Player 2 Wins!").css({color: "yellow"}).css({border: "7px solid yellow"})
     playWinnerSound();
-    // alert("Player 2 Wins!");
-
   }
-}
+};
 
 function render() {
   for (var i = 0; i < 14; i +=1) {
     $("#pit" + i).html(board[i]);
   }
-}
+};
 
 //audio manipulation
 ///////////////////////////////
@@ -256,28 +287,27 @@ var kO = $("#winner")[0];
 var oneUp = $("#goAgain")[0];
 var wrongMove = $("#wrongMove")[0];
 
-
 //play sounds when you trigger a specific type of move
 ////////////////////////////////
 $(".cell").mouseenter(function() {
   audio.play();
-})
+});
 
 var playCollectSound = function() {
   score.play();
-}
+};
 
 var playGoAgain = function() {
   oneUp.play();
-}
+};
 
 var playWinnerSound = function () {
   kO.play();
-}
+};
 
 var playWrongMoveSound = function() {
   wrongMove.play();
-}
+};
 
 $("#pauseMusic").on("click", function(){
   if ($("#pauseMusic").html() === "Music: ON" ) {
@@ -287,4 +317,4 @@ $("#pauseMusic").on("click", function(){
     song.play();
     $("#pauseMusic").html("Music: ON");
   }
-})
+});

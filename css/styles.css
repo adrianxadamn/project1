@@ -12,11 +12,11 @@ background-repeat: repeat-x;
 
 .store1 {
   margin: 10px 10px;
-  border: 7px solid teal;
+  border: 7px solid yellow;
   padding: 15px;
   height: 85px;
   width: 65px;
-  background-color: teal;
+  background-color: yellow;
   color: black;
   font-weight: bold;
   font-size: 60px;
@@ -31,11 +31,11 @@ background-repeat: repeat-x;
 
 .store2 {
   margin: 10px 10px;
-  border: 7px solid teal;
+  border: 7px solid red;
   padding: 15px;
   height: 85px;
   width: 65px;
-  background-color: teal;
+  background-color: red;
   color: black;
   font-weight: bold;
   font-size: 60px;
@@ -45,7 +45,7 @@ background-repeat: repeat-x;
   font-family:'Righteous', cursive;
 }
 
-.cell {
+.cell1, .cell2 {
   margin: 10px 10px;
   border: 7px solid teal;
   padding: 15px;
@@ -59,12 +59,6 @@ background-repeat: repeat-x;
   background-clip: content-box;
   text-align: center;
   font-family:'Righteous', cursive;
-}
-
-.cell:hover {
-  background-color: yellow;
-  border-color: yellow ;
-  box-shadow: 0px 0px 100px #fff;
 }
 
 .row2 {
