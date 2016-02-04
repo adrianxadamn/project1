@@ -6,13 +6,13 @@
 
 ####How to Play:
 
+![alt tag](https://www.youcubed.org/wp-content/uploads/Mancala.jpg)
+
 #####Vocabulary:
 
 <li><b>Seeds</b> - located inside a pit. These seeds are waiting to be captured and put into your storage.
 <li><b>Pit</b>  - located on the field that holds your seeds. 
 <li><b>Storage</b>  - contains all of your seeds during the game. The player with the most seeds inside their storage by the end of the game wins.
-
-
 
 ######Move Phase
 

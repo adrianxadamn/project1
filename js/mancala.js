@@ -49,12 +49,14 @@ function playerTwoHover() {
 $(".cell1").on("click", function(event) {
   event.preventDefault();
   var seedIndex = parseInt(event.target.id.slice(3));
+  turnBox.html("Turn: Player 1")
   invalidMove(seedIndex);
 });
 
 $(".cell2").on("click", function(event) {
   event.preventDefault();
   var seedIndex = parseInt(event.target.id.slice(3));
+  turnBox.html("Turn: Player 2")
   invalidMove(seedIndex);
 });
 
@@ -65,17 +67,17 @@ var invalidMove = function (seedIndex){
     if (board[seedIndex] >= 1) {
       move(seedIndex, board[seedIndex], afterMove);
     } else {
-      alert("invalid move!")
+      turnBox.html("Invalid Move!")
     }
   } else if (turn === "player2" && seedIndex > 6) {
       if (board[seedIndex] >= 1) {
         move(seedIndex, board[seedIndex], afterMove);
       } else {
-        alert("invalid move!")
+        turnBox.html("Invalid Move!")
       }
   } else {
     playWrongMoveSound();
-    alert("invalid move!")
+    turnBox.html("Invalid Move!")
   }
 }
 
