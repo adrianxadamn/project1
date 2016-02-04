@@ -1,12 +1,7 @@
-/*@media only screen and (min-width: 768px) {
-
-}
-*/
 body {
-/*  background-color: black;*/
-background-image: url(../images/7.jpg);
-background-repeat: repeat-x;
-background-repeat: repeat-y;
+  background-image: url(../images/7.jpg);
+  background-repeat: repeat-x;
+  background-repeat: repeat-y;
 }
 
 .store1 {
@@ -39,9 +34,9 @@ background-repeat: repeat-y;
   font-weight: bold;
   font-size: 60px;
   background-clip: content-box;
-  float: left;
   text-align: center;
   font-family:'Righteous', cursive;
+  float: left;
 }
 
 .cell1, .cell2 {
@@ -111,9 +106,6 @@ h1:hover {
 
 #pauseMusic {
   margin: 3px auto;
-/*  position: relative;
-  left: 23px;*/
-
 }
 
 #pauseMusic:hover{
@@ -125,7 +117,6 @@ h1:hover {
 .points2 {
   color: red;
   font-size: 200px;
-/*  background-color: yellow;*/
   width:150px;
   font-family:'Righteous', cursive;
   text-align:center;
@@ -135,7 +126,6 @@ h1:hover {
 .points1 {
   color: yellow;
   font-size: 200px;
-/*  background-color: yellow;*/
   width:150px;
   font-family:'Righteous', cursive;
   float: left;

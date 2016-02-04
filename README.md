@@ -1,12 +1,25 @@
 #M a n c a l a
+![alt tag](assets/mancala.jpg)
+-
+##Developer: Adrian Nuyda
+#####Technologies used:
+<li> HTML
+<li> CSS
+<li> JavaScript
+<li> jQuery
+
+##Table of Contents
+<ol>
+	<li> 
+	<li> 
+	<li> How to Play
+	<li> Unsolved Problems
+</ol>
+
+
 -
 
-###Developer: Adrian Nuyda
--
-
-####How to Play:
-
-![alt tag](https://www.youcubed.org/wp-content/uploads/Mancala.jpg)
+####<b>3. <u>How to Play</u></b>
 
 #####Vocabulary:
 
@@ -15,14 +28,15 @@
 <li><b>Storage</b>  - contains all of your seeds during the game. The player with the most seeds inside their storage by the end of the game wins.
 
 ######Move Phase
+![alt tag](assets/mancala2.jpg)
 
-Each player takes turn to play seeds. During their turn, a player must choose one non-empty pit from their side of the field. When selecting a pit, the player will grab all of the seeds from the pit. The player will then drop a single seed into the next pit in a counter-clock wise direction until he runs out of seeds from his hand. 
+Each player takes turn to play seeds. During their turn, a player must choose one non-empty pit from their side of the field. When selecting a pit, the player will grab all of the seeds from the pit. The player will then drop a single seed into the next pit in a <b><u><i>counter-clock wise direction</b></u></i> until he runs out of seeds from his hand. 
 
-<i> The player is <u><b>NOT ALLOWED</u></b> to drop his seeds into the opponent's storage. 
+<i> The player is <u><b>NOT ALLOWED</u></b> to drop their seeds into the opponent's storage. 
 </i>
 
 ######Move Again Phase
-If the player drops his last seed into his storage, then that player is allowed to make another move. 
+If the player drops their last seed into their storage, then that player is allowed to make another move. 
 
 
 ######Capture Phase
@@ -35,4 +49,7 @@ If a player does not have anymore seeds in his field, then the game is over. The
 
 The winner is the player who has the most pieces in their storage.
 	
+####<b>4. <u>Unsolved Problems</u></b>
+
+<i>Please avoid from clicking two pits during a turn.</i> The only problem that I have with my game is that you are able to possibily move twice during your turn which will completely mess up logic of the game. Simply restart the game if you had encountered this unsolved problem.
 

@@ -18,32 +18,6 @@ $("#newGameId").on("click", function(event) {
   render();
 });
 
-function changeHoverColor() {
-if (turn === "player1") {
-  $(".cell2").off('mouseenter mouseleave');
-  $(".cell2").css("background-color", "teal").css({border: "7px solid teal"}).css("box-shadow", "0px 0px 0px")
-  playerOneHover();
-} else if (turn === "player2"){
-  $(".cell1").off('mouseenter mouseleave');
-  $(".cell1").css("background-color", "teal").css({border: "7px solid teal"}).css("box-shadow", "0px 0px 0px")
-  playerTwoHover();
-}};
-
-function playerOneHover() {
-  $(".cell1").hover(function(){
-    $(this).css("background-color", "yellow").css({border: "7px solid yellow"}).css("box-shadow", "0px 0px 100px #fff")
-  }, function () {
-    $(this).css("background-color", "teal").css({border: "7px solid teal"}).css("box-shadow", "0px 0px 0px")
-  });
-}
-function playerTwoHover() {
-  $(".cell2").hover(function(){
-    $(this).css("background-color", "red").css({border: "7px solid red"}).css("box-shadow", "0px 0px 100px #fff")
-  }, function () {
-    $(this).css("background-color", "teal").css({border: "7px solid teal"}).css("box-shadow", "0px 0px 0px")
-  });
-}
-
 //triggers move function when you click a pit
 ////////////////////////////
 $(".cell1").on("click", function(event) {
@@ -83,6 +57,7 @@ var invalidMove = function (seedIndex){
 
 //move function
 //////////////////////////
+//seedNum turns into an integer
 function move(seedIndex, seedNum, cb) {
   if (beforeClick === true) {
     board[seedIndex] = 0;
@@ -115,7 +90,7 @@ function move(seedIndex, seedNum, cb) {
     render();
     //recursion function
     if (seedNum === 0) {
-      cb(seedIndex)
+      cb(seedIndex);
     } else {
       move(seedIndex, seedNum, cb);
     }
@@ -135,26 +110,22 @@ var moveAgain = function(seedIndex) {
     if (seedIndex === 6) {
       turn = "player1";
       playGoAgain();
-      console.log(turn + " moves again")
       getWinner();
     } else {
       turn = "player2";
       changeHoverColor();
       turnBox.html("Turn: Player 2").css({color: "red"})
-      console.log("it's " + turn + "'s turn")
       getWinner();
     }
   } else if (turn ==="player2") {
       if (seedIndex === 13) {
         turn = "player2";
         playGoAgain();
-        console.log(turn + " moves again")
         getWinner();
       } else {
         turn = "player1";
         changeHoverColor();
         turnBox.html("Turn: Player 1").css({color: "yellow"})
-        console.log("it's " + turn + "'s turn");
         getWinner();
       }
   }
@@ -305,9 +276,14 @@ var wrongMove = $("#wrongMove")[0];
 
 //play sounds when you trigger a specific type of move
 ////////////////////////////////
-$(".cell").mouseenter(function() {
+
+var playHoverSound = function (){
+$(".cell1, .cell2").mouseenter(function() {
   audio.play();
 });
+}
+
+playHoverSound();
 
 var playCollectSound = function() {
   score.play();
@@ -334,3 +310,33 @@ $("#pauseMusic").on("click", function(){
     $("#pauseMusic").html("Music: ON");
   }
 });
+
+///changes hover color depending on who's turn it is
+////////////////////
+function changeHoverColor() {
+if (turn === "player1") {
+  $(".cell2").off('mouseenter mouseleave');
+  playHoverSound();
+  $(".cell2").css("background-color", "teal").css({border: "7px solid teal"}).css("box-shadow", "0px 0px 0px")
+  playerOneHover();
+} else if (turn === "player2"){
+  $(".cell1").off('mouseenter mouseleave');
+  playHoverSound();
+  $(".cell1").css("background-color", "teal").css({border: "7px solid teal"}).css("box-shadow", "0px 0px 0px")
+  playerTwoHover();
+}};
+
+function playerOneHover() {
+  $(".cell1").hover(function(){
+    $(this).css("background-color", "yellow").css({border: "7px solid yellow"}).css("box-shadow", "0px 0px 100px #fff")
+  }, function () {
+    $(this).css("background-color", "teal").css({border: "7px solid teal"}).css("box-shadow", "0px 0px 0px")
+  });
+}
+function playerTwoHover() {
+  $(".cell2").hover(function(){
+    $(this).css("background-color", "red").css({border: "7px solid red"}).css("box-shadow", "0px 0px 100px #fff")
+  }, function () {
+    $(this).css("background-color", "teal").css({border: "7px solid teal"}).css("box-shadow", "0px 0px 0px")
+  });
+}
