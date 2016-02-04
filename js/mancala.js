@@ -114,6 +114,7 @@ var moveAgain = function(seedIndex) {
     } else {
       turn = "player2";
       changeHoverColor();
+      playHoverSound2();
       turnBox.html("Turn: Player 2").css({color: "red"})
       getWinner();
     }
@@ -125,6 +126,7 @@ var moveAgain = function(seedIndex) {
       } else {
         turn = "player1";
         changeHoverColor();
+        playHoverSound1();
         turnBox.html("Turn: Player 1").css({color: "yellow"})
         getWinner();
       }
@@ -250,12 +252,14 @@ function getWinner(){
 };
 
 function winnerIs(){
-  if (board[6] >= board[13]) {
+  if (board[6] > board[13]) {
     turnBox.html("Player 1 Wins!").css({color: "yellow"}).css({border: "7px solid yellow"})
     playWinnerSound();
-  } else {
+  } else if (board[6] < board[13]) {
     turnBox.html("Player 2 Wins!").css({color: "yellow"}).css({border: "7px solid yellow"})
     playWinnerSound();
+  } else {
+    turnBox.html("DRAW!").css({color: "teal"}).css({border: "7px solid teal"})
   }
 };
 
@@ -277,13 +281,20 @@ var wrongMove = $("#wrongMove")[0];
 //play sounds when you trigger a specific type of move
 ////////////////////////////////
 
-var playHoverSound = function (){
-$(".cell1, .cell2").mouseenter(function() {
+var playHoverSound1 = function (){
+$(".cell1").mouseenter(function() {
   audio.play();
 });
 }
 
-playHoverSound();
+var playHoverSound2 = function (){
+$(".cell2").mouseenter(function() {
+  audio.play();
+});
+}
+
+
+playHoverSound1();
 
 var playCollectSound = function() {
   score.play();
@@ -316,12 +327,12 @@ $("#pauseMusic").on("click", function(){
 function changeHoverColor() {
 if (turn === "player1") {
   $(".cell2").off('mouseenter mouseleave');
-  playHoverSound();
+  playHoverSound1();
   $(".cell2").css("background-color", "teal").css({border: "7px solid teal"}).css("box-shadow", "0px 0px 0px")
   playerOneHover();
 } else if (turn === "player2"){
   $(".cell1").off('mouseenter mouseleave');
-  playHoverSound();
+  playHoverSound2();
   $(".cell1").css("background-color", "teal").css({border: "7px solid teal"}).css("box-shadow", "0px 0px 0px")
   playerTwoHover();
 }};

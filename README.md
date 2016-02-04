@@ -10,14 +10,19 @@
 
 ##Table of Contents
 <ol>
-	<li> 
-	<li> 
+	<li> Design?
+	<li> How to Install
 	<li> How to Play
 	<li> Unsolved Problems
 </ol>
 
 
 -
+####<b>2. <u>How to Install</u></b>
+
+1. Open up your browser.
+2. Copy and paste this link to your url browser. <b>
+http://adrianxadamn.github.io/project1/ </b>
 
 ####<b>3. <u>How to Play</u></b>
 
