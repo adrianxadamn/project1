@@ -26,13 +26,13 @@ If the player drops his last seed into his storage, then that player is allowed 
 
 
 ######Capture Phase
-If the last seed you drop is an empty hole on your side, you can capture that seed and all seeds from your opponent's pit and transfer them into your storage. <i> WARNING: This only works if the opponent's pit has more than one seed inside.</i>
+If the last seed you drop is an empty hole on your side, you can capture that seed and all seeds from your opponent's pit and transfer them into your storage. <i><b> WARNING: This only works if the opponent's pit has more than one seed inside.</i></b>
 
 ######Game Over
 If a player does not have anymore seeds in his field, then the game is over. The other player will then capture all of his seeds left on their field and transfer them to their storage.
 
 ######Winner
 
-The winner is the player who has the most pieces in their storage
+The winner is the player who has the most pieces in their storage.
 	
 
