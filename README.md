@@ -1,5 +1,5 @@
 #M a n c a l a
-![alt tag](assets/mancala.jpg)
+![alt tag](assets/Mancala.jpg)
 -
 ##Developer: Adrian Nuyda
 #####Technologies used:
