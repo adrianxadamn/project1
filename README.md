@@ -3,7 +3,7 @@
 -
 ##Developer: Adrian Nuyda
 
-Trello: <b>https://trello.com/b/uVdPkGSw/project-1-mancala</b>
+[Trello Link](https://trello.com/b/uVdPkGSw/project-1-mancala)
 
 #####Technologies used:
 <li> HTML
@@ -20,15 +20,15 @@ Trello: <b>https://trello.com/b/uVdPkGSw/project-1-mancala</b>
 </ol>
 -
 
-####<b>2. <u>Design Approach</u></b>
+####<b>1. <u>Design Approach</u></b>
 The moment I've wanted to create Mancala, I wanted to design it with an arcade/8-bit theme. I've added music that will fit perfectly with the background image so users will get a feel of that space-cy-atmosphere environment when playing my game. Moreover, I've also added mario sound effects to give it that retro feeling.
 
 -
 ####<b>2. <u>How to Install</u></b>
 
 1. Open up your browser.
-2. Copy and paste this link to your url browser. <b>
-http://adrianxadamn.github.io/project1/ </b>
+2. Copy and paste this link to your url browser:
+[http://adrianxadamn.github.io/project1/](http://adrianxadamn.github.io/project1/) 
 
 ####<b>3. <u>How to Play</u></b>
 
