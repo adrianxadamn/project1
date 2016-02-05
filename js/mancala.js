@@ -185,7 +185,7 @@ function winnerIs(){
     turnBox.html("Player 1 Wins!").css({color: "yellow"}).css({border: "7px solid yellow"})
     playWinnerSound();
   } else if (board[6] < board[13]) {
-    turnBox.html("Player 2 Wins!").css({color: "yellow"}).css({border: "7px solid yellow"})
+    turnBox.html("Player 2 Wins!").css({color: "red"}).css({border: "7px solid red"})
     playWinnerSound();
   } else {
     turnBox.html("It's a Draw!").css({color: "teal"}).css({border: "7px solid teal"})
