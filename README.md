@@ -30,6 +30,9 @@ The moment I've wanted to create Mancala, I wanted to design it with an arcade/8
 2. Copy and paste this link to your url browser:
 [http://adrianxadamn.github.io/project1/](http://adrianxadamn.github.io/project1/) 
 
+-
+
+
 ####<b>3. <u>How to Play</u></b>
 
 #####Vocabulary:
@@ -59,7 +62,8 @@ If a player does not have anymore seeds in his field, then the game is over. The
 ######Winner
 
 The winner is the player who has the most pieces in their storage.
-	
+
+-
 ####<b>4. <u>Unsolved Problems</u></b>
 
 <i>Please avoid from clicking two pits during a turn.</i> The only problem that I have with my game is that you are able to possibily move twice during your turn which will completely mess up logic of the game. Simply restart the game if you had encountered this unsolved problem.
