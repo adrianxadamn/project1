@@ -9,7 +9,7 @@ playerOneHover();
 turnBox.css({color: "yellow"})
 
 //restarts Game
-/////////////
+
 $("#newGameId").on("click", function(event) {
   board = [4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 0];
   turn = "player1"
