@@ -7,7 +7,6 @@ var turnBox = $("#turn");
 render();
 playerOneHover();
 turnBox.css({color: "yellow"})
-
 var computer = false;
 
 var askUser = function () {
@@ -23,9 +22,8 @@ if (computer.toLowerCase() === "yes") {
 
 askUser();
 
-
 //restarts Game
-
+/////////////
 $("#newGameId").on("click", function(event) {
   board = [4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 0];
   turn = "player1"
@@ -49,6 +47,9 @@ $(".cell2").on("click", function(event) {
   turnBox.html("Turn: Player 2")
   invalidMove(seedIndex);
 });
+
+
+
 
 // checks if move is invalid
 ///////////////////////
@@ -81,26 +82,9 @@ var invalidMove = function (seedIndex){
 }
 
 var playerAi = function (){
-
-  if (board[12] === 1) {
-    invalidMove(12);
-  } else if (board[11] === 2) {
-    invalidMove(11);
-  } else if (board[10] === 3) {
-    invalidMove(10);
-  } else if (board[9] === 4) {
-    invalidMove(9);
-  } else if (board[8] === 5) {
-    invalidMove(8);
-  } else if (board[9] === 6) {
-    invalidMove(7);
-  } else {
     var seedIndex = (Math.floor((Math.random() * 6) + 7))
     invalidMove(seedIndex);
-  };
-
 }
-
 
 //move function
 //////////////////////////
@@ -141,7 +125,7 @@ function move(seedIndex, seedNum, cb) {
     } else {
       move(seedIndex, seedNum, cb);
     }
-  }, 300)
+  }, 200)
 }
 
 //this function will run once move has ended
@@ -213,48 +197,119 @@ var moveAgainAi = function(seedIndex) {
 
 //checks if the player can capture the opponent's seeds
 //////////////////////////////
-var capture = function(seedIndex){
-if (turn === "player1") {
-  for (var i = 12, j = 0; i > 6; i--, j++) {
-    if (12 - i === seedIndex && board[seedIndex] === 1 && board[i] >= 1) {
-      board[6] += board[i] + 1;
+var capture = function(seedIndex) {
+  if (turn === "player1") {
+    if (12 - 12 === seedIndex && board[seedIndex] === 1 && board[12] >= 1 ) {
+      board[6] += board[12] + 1;
       $(".points1").html("+" + (board[12] + 1)).fadeIn("slow").fadeOut("slow");
-      board[i] = 0;
-      board[j] = 0;
+      board[12] = 0;
+      board[0] = 0;
       playCollectSound();
       render();
-    }
-  }
-} else if (turn === "player2") {
-  for (var i = 5, j = 7; i >= 0; i--, j++ ) {
-    if (12 - i === seedIndex && board[seedIndex] === 1 && board[i] >= 1) {
-      board[13] += board[i] + 1;
-      $(".points2").html("+" + (board[i] + 1)).fadeIn("slow").fadeOut("slow");
-      board[j] = 0;
-      board[i] = 0;
+    } else if (12 - 11 === seedIndex && board[seedIndex] === 1 && board[11] >= 1 ) {
+      board[6] += board[11] + 1;
+      $(".points1").html("+" + (board[11] + 1)).fadeIn("slow").fadeOut("slow");
+      board[1] = 0;
+      board[11] = 0;
       playCollectSound();
       render();
-    }
-  }
-}};
+    } else if (12 - 10 === seedIndex && board[seedIndex] === 1 && board[10] >= 1 ) {
+      board[6] += board[10] + 1;
+      $(".points1").html("+" + (board[10] + 1)).fadeIn("slow").fadeOut("slow");
+      board[2] = 0;
+      board[10] = 0;
+      playCollectSound();
+      render();
+    } else if (12 - 9 === seedIndex && board[seedIndex] === 1 && board[9] >= 1 ) {
+      board[6] += board[9] + 1;
+      $(".points1").html("+" + (board[9] + 1)).fadeIn("slow").fadeOut("slow");
+      board[3] = 0;
+      board[9] = 0;
+      playCollectSound();
+      render();
+    } else if (12 - 8 === seedIndex && board[seedIndex] === 1 && board[8] >= 1 ) {
+      board[6] += board[8] + 1;
+      $(".points1").html("+" + (board[8] + 1)).fadeIn("slow").fadeOut("slow");
+      board[4] = 0;
+      board[8] = 0;
+      playCollectSound();
+      render();
+    } else if (12 - 7 === seedIndex && board[seedIndex] === 1 && board[7] >= 1 ) {
+      board[6] += board[7] + 1;
+      $(".points1").html("+" + (board[7] + 1)).fadeIn("slow").fadeOut("slow");
+      board[5] = 0;
+      board[7] = 0;
+      playCollectSound();
+      render();
+}} else if (turn === "player2") {
+    if (12 - 5 === seedIndex && board[seedIndex] === 1 && board[5] >= 1 ) {
+      board[13] += board[5] + 1;
+      $(".points2").html("+" + (board[5] + 1)).fadeIn("slow").fadeOut("slow");
+      board[7] = 0;
+      board[5] = 0;
+      playCollectSound();
+      render();
+    } else if (12 - 4 === seedIndex && board[seedIndex] === 1 && board[4] >= 1 ) {
+      board[13] += board[4] + 1;
+      $(".points2").html("+" + (board[4] + 1)).fadeIn("slow").fadeOut("slow");
+      board[8] = 0;
+      board[4] = 0;
+      playCollectSound();
+      render();
+    } else if (12 - 3 === seedIndex && board[seedIndex] === 1 && board[3] >= 1 ) {
+      board[13] += board[3] + 1;
+      $(".points2").html("+" + (board[3] + 1)).fadeIn("slow").fadeOut("slow");
+      board[9] = 0;
+      board[3] = 0;
+      playCollectSound();
+      render();
+    } else if (12 - 2 === seedIndex && board[seedIndex] === 1 && board[2] >= 1 ) {
+      board[13] += board[2] + 1;
+      $(".points2").html("+" + (board[2] + 1)).fadeIn("slow").fadeOut("slow");
+      board[10] = 0;
+      board[2] = 0;
+      playCollectSound();
+      render();
+    } else if (12 - 1 === seedIndex && board[seedIndex] === 1 && board[1] >= 1 ) {
+      board[13] += board[1] + 1;
+      $(".points2").html("+" + (board[1] + 1)).fadeIn("slow").fadeOut("slow");
+      board[11] = 0;
+      board[1] = 0;
+      playCollectSound();
+      render();
+    } else if (12 - 0 === seedIndex && board[seedIndex] === 1 && board[0] >= 1 ) {
+      board[13] += board[0] + 1;
+      $(".points2").html("+" + (board[0] + 1)).fadeIn("slow").fadeOut("slow");
+      board[12] = 0;
+      board[0] = 0;
+      playCollectSound();
+      render();
+    }}
+  };
 
 //getWinner functions
 /////////////////////
 function getWinner(){
-if (board[0] + board[1] + board[2] + board[3] + board[4] + board[5] === 0) {
-  for (var i = 7; i < 13; i++ ){
-    board[13] += board[i];
-    board[i] = 0;
-  }
-    render()
-    winnerIs();
-} else if (board[7] + board[8] + board[9] + board[10] + board[11] + board[12] === 0) {
-    for (var i = 0; i < 6; i++) {
-      board[6] += board[i];
-      board[i] = 0;
-    }
-    render()
-    winnerIs();
+  if (board[0] + board[1] + board[2] + board[3] + board[4] + board[5] === 0) {
+    board[13] += board[7] + board[8] + board[9] + board[10] + board[11] + board[12];
+    board[7] = 0;
+    board[8] = 0;
+    board[9] = 0;
+    board[10] = 0;
+    board[11] = 0;
+    board[12] = 0;
+    render();
+    return winnerIs();
+  } else if (board[7] + board[8] + board[9] + board[10] + board[11] + board[12] === 0) {
+    board[6] += board[0] + board[1] + board[2] + board[3] + board[4] + board[5];
+    board[0] = 0;
+    board[1] = 0;
+    board[2] = 0;
+    board[3] = 0;
+    board[4] = 0;
+    board[5] = 0;
+    render();
+    return winnerIs();
   }
 };
 
@@ -262,15 +317,14 @@ function winnerIs(){
   if (board[6] > board[13]) {
     turnBox.html("Player 1 Wins!").css({color: "yellow"}).css({border: "7px solid yellow"})
     playWinnerSound();
-  } else if (board[6] < board[13]) {
-    turnBox.html("Player 2 Wins!").css({color: "red"}).css({border: "7px solid red"})
+  } else if(board[6] < board[13]) {
+    turnBox.html("Player 2 Wins!").css({color: "yellow"}).css({border: "7px solid yellow"})
     playWinnerSound();
   } else {
-    turnBox.html("It's a Draw!").css({color: "teal"}).css({border: "7px solid teal"})
+    turnBox.html("DRAW!").css({color: "teal"}).css({border: "7px solid teal"})
   }
 };
 
-///displays data on html
 function render() {
   for (var i = 0; i < 14; i +=1) {
     $("#pit" + i).html(board[i]);
@@ -289,19 +343,13 @@ var wrongMove = $("#wrongMove")[0];
 //play sounds when you trigger a specific type of move
 ////////////////////////////////
 
-var playHoverSound1 = function (){
-$(".cell1").mouseenter(function() {
+var playHoverSound = function (){
+$(".cell1, .cell2").mouseenter(function() {
   audio.play();
 });
 }
 
-var playHoverSound2 = function (){
-$(".cell2").mouseenter(function() {
-  audio.play();
-});
-}
-
-playHoverSound1();
+playHoverSound();
 
 var playCollectSound = function() {
   score.play();
@@ -334,12 +382,12 @@ $("#pauseMusic").on("click", function(){
 function changeHoverColor() {
 if (turn === "player1") {
   $(".cell2").off('mouseenter mouseleave');
-  playHoverSound1();
+  playHoverSound();
   $(".cell2").css("background-color", "teal").css({border: "7px solid teal"}).css("box-shadow", "0px 0px 0px")
   playerOneHover();
 } else if (turn === "player2"){
   $(".cell1").off('mouseenter mouseleave');
-  playHoverSound2();
+  playHoverSound();
   $(".cell1").css("background-color", "teal").css({border: "7px solid teal"}).css("box-shadow", "0px 0px 0px")
   playerTwoHover();
 }};
@@ -358,3 +406,4 @@ function playerTwoHover() {
     $(this).css("background-color", "teal").css({border: "7px solid teal"}).css("box-shadow", "0px 0px 0px")
   });
 }
+
