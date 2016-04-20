@@ -84,6 +84,7 @@ var playerAi = function() {
 
   if (board[12] === 1) {
     invalidMove(12);
+    getWinner();
   } else if (board[11] === 2) {
     invalidMove(11);
   } else if (board[10] === 3) {
@@ -94,6 +95,17 @@ var playerAi = function() {
     invalidMove(8);
   } else if (board[7] === 6) {
     invalidMove(7);
+  } else if (board[12] + board[11] + board[10] >= board[9] + board[8] + board[7]) {
+      if (board[12] >= board[11] && board[12] >= board[10]) {
+        getWinner();
+        invalidMove(12);
+      } else if (board[11] >= board[12] && board[11] >= board[10]) {
+        getWinner();
+        invalidMove(11);
+      } else if (board[10] >= board[12] && board[10] >= board[11]) {
+        getWinner();
+        invalidMove(10);
+      };
   } else if (board[7] >= board[8] + board[9] + board[10] + board[11] + board[12]) {
     invalidMove(7);
   } else if (board[8] >= board[7] + board[9] + board[10] + board[11] + board[12]) {
