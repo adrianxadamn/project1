@@ -8,6 +8,22 @@ render();
 playerOneHover();
 turnBox.css({color: "yellow"})
 
+var computer = false;
+
+var askUser = function () {
+computer = prompt("Do you want to play against an Bot(Easy)? [Yes/No]")
+if (computer.toLowerCase() === "yes") {
+  computer = true;
+} else if (computer.toLowerCase() === "no"){
+  computer = false;
+} else {
+  alert("Please type in [yes] or [no]")
+  askUser();
+}};
+
+askUser();
+
+
 //restarts Game
 
 $("#newGameId").on("click", function(event) {
@@ -43,17 +59,48 @@ var invalidMove = function (seedIndex){
     } else {
       turnBox.html("Invalid Move!")
     }
-  } else if (turn === "player2" && seedIndex > 6) {
+  } else if (turn === "player2" && seedIndex > 6 && computer === true) {
       if (board[seedIndex] >= 1) {
-        move(seedIndex, board[seedIndex], afterMove);
+        move(seedIndex, board[seedIndex], afterMove)
+        console.log("computer made a move")
       } else {
         turnBox.html("Invalid Move!")
+        console.log("computer made wrong move")
+        playerAi();
       }
+  } else if (turn === "player2" && seedIndex > 6) {
+    if (board[seedIndex] >= 1) {
+      move(seedIndex, board[seedIndex], afterMove)
+    } else {
+      turnBox.html("Invalid Move!")
+    }
   } else {
     playWrongMoveSound();
     turnBox.html("Invalid Move!")
   }
 }
+
+var playerAi = function (){
+
+  if (board[12] === 1) {
+    invalidMove(12);
+  } else if (board[11] === 2) {
+    invalidMove(11);
+  } else if (board[10] === 3) {
+    invalidMove(10);
+  } else if (board[9] === 4) {
+    invalidMove(9);
+  } else if (board[8] === 5) {
+    invalidMove(8);
+  } else if (board[9] === 6) {
+    invalidMove(7);
+  } else {
+    var seedIndex = (Math.floor((Math.random() * 6) + 7))
+    invalidMove(seedIndex);
+  };
+
+}
+
 
 //move function
 //////////////////////////
@@ -94,7 +141,7 @@ function move(seedIndex, seedNum, cb) {
     } else {
       move(seedIndex, seedNum, cb);
     }
-  }, 200)
+  }, 300)
 }
 
 //this function will run once move has ended
@@ -111,27 +158,58 @@ var moveAgain = function(seedIndex) {
       turn = "player1";
       playGoAgain();
       getWinner();
+    } else if (seedIndex !== 6 && computer === true) {
+      turn = "player2";
+      changeHoverColor();
+      turnBox.html("Turn: Player 2").css({color: "red"})
+      getWinner();
+      playerAi();
     } else {
       turn = "player2";
       changeHoverColor();
-      playHoverSound2();
       turnBox.html("Turn: Player 2").css({color: "red"})
-      getWinner();
-    }
-  } else if (turn ==="player2") {
-      if (seedIndex === 13) {
+      getWinner();   }
+  } else if (turn === "player2") {
+      if (seedIndex === 13 && computer === true) {
         turn = "player2";
         playGoAgain();
+        getWinner();
+        playerAi();
+      } else if (seedIndex !== 13 && computer === true) {
+        turn = "player1";
+        changeHoverColor();
+        turnBox.html("Turn: Player 1").css({color: "yellow"})
+        getWinner();
+      } else if (seedIndex === 13 && computer === false) {
+        turn = "player2";
+        playGoAgain();
+        getWinner();
+      } else if (seedIndex !== 13 && computer === false) {
+        turn = "player1";
+        changeHoverColor();
+        turnBox.html("Turn: Player 1").css({color: "yellow"})
         getWinner();
       } else {
         turn = "player1";
         changeHoverColor();
-        playHoverSound1();
-        turnBox.html("Turn: Player 1").css({color: "yellow"})
         getWinner();
       }
   }
 };
+
+var moveAgainAi = function(seedIndex) {
+  if (seedIndex === 13) {
+    turn = "player2"
+    playGoAgain();
+    getWinner();
+    playerAi();
+  } else {
+    turn = "player1";
+    changeHoverColor();
+    turnBox.html("Turn: Player 1").css({color: "yellow"});
+    getWinner();
+  }
+}
 
 //checks if the player can capture the opponent's seeds
 //////////////////////////////
@@ -280,3 +358,4 @@ function playerTwoHover() {
     $(this).css("background-color", "teal").css({border: "7px solid teal"}).css("box-shadow", "0px 0px 0px")
   });
 }
+
