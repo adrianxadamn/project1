@@ -1,4 +1,4 @@
-var board = [4, 4, 4, 4, 4, 4, 0, 1, 0, 0, 0, 0, 15, 0];
+var board = [4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 0];
 var gameOver = false;
 var turn = "player1";
 var seedsInHand = 0;
