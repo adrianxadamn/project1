@@ -82,7 +82,9 @@ var invalidMove = function (seedIndex){
 
 var playerAi = function() {
 
-  if (board[12] === 1) {
+  if (board[0] + board[1] + board[2] + board[3] + board[4] + board[5] === 0) {
+    getWinner();
+  } else if (board[12] === 1) {
     invalidMove(12);
     getWinner();
   } else if (board[11] === 2) {
@@ -105,7 +107,7 @@ var playerAi = function() {
       } else if (board[10] >= board[12] && board[10] >= board[11]) {
         getWinner();
         invalidMove(10);
-      };
+      }
   } else if (board[7] >= board[8] + board[9] + board[10] + board[11] + board[12]) {
     invalidMove(7);
   } else if (board[8] >= board[7] + board[9] + board[10] + board[11] + board[12]) {
