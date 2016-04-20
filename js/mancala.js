@@ -80,7 +80,7 @@ var invalidMove = function (seedIndex){
   }
 }
 
-var playerAi = function (){
+var playerAi = function() {
 
   if (board[12] === 1) {
     invalidMove(12);
@@ -92,8 +92,64 @@ var playerAi = function (){
     invalidMove(9);
   } else if (board[8] === 5) {
     invalidMove(8);
-  } else if (board[9] === 6) {
+  } else if (board[7] === 6) {
     invalidMove(7);
+  } else if (board[7] === 1 && board[8] === 0) {
+    invalidMove(7);
+  } else if (board[7] === 2 && board[9] === 0) {
+    invalidMove(7);
+  } else if (board[7] === 3 && board[10] === 0) {
+    invalidMove(7);
+  } else if (board[7] === 4 && board[11] === 0) {
+    invalidMove(7);
+  } else if (board[7] === 5 && board[12] === 0) {
+    invalidMove(7);
+  } else if (board[8] === 1 && board[9] === 0) {
+    invalidMove(8);
+  } else if (board[8] === 2 && board[10] === 0) {
+    invalidMove(8);
+  } else if (board[8] === 3 && board[11] === 0) {
+    invalidMove(8);
+  } else if (board[8] === 4 && board[12] === 0) {
+    invalidMove(8);
+  } else if (board[9] === 1 && board[10] === 0) {
+    invalidMove(9);
+  } else if (board[9] === 2 && board[11] === 0) {
+    invalidMove(9);
+  } else if (board[9] === 3 && board[12] === 0) {
+    invalidMove(9);
+  } else if (board[10] === 1 && board[11] === 0) {
+    invalidMove(10);
+  } else if (board[10] === 2 && board[12] === 0) {
+    invalidMove(10);
+  } else if (board[11] === 1 && board[8] === 0) {
+    invalidMove(11);
+  } else if (board[7] >= board[8] + board[9] + board[10] + board[11] + board[12]) {
+    invalidMove(7);
+  } else if (board[8] >= board[7] + board[9] + board[10] + board[11] + board[12]) {
+    invalidMove(8);
+  } else if (board[9] >= board[8] + board[7] + board[10] + board[11] + board[12]) {
+    invalidMove(9);
+  } else if (board[10] >= board[8] + board[9] + board[7] + board[11] + board[12]) {
+    invalidMove(10);
+  } else if (board[11] >= board[8] + board[9] + board[10] + board[7] + board[12]) {
+    invalidMove(11);
+  } else if (board[12] >= board[8] + board[9] + board[10] + board[11] + board[7]) {
+    invalidMove(12);
+  } else if (board[12] >= 8 && board[7] === 0) {
+    invalidMove(12);
+  } else if (board[11] >= 9 && board[7] === 0) {
+    invalidMove(11);
+  } else if (board[10] >= 10 && board[7] === 0) {
+    invalidMove(10);
+  } else if (board[9] >= 11 && board[7] === 0) {
+    invalidMove(9);
+  } else if (board[8] >= 12 && board[7] === 0) {
+    invalidMove(8);
+  } else if (board[7] >= 13 && board[7] === 0) {
+    invalidMove(7);
+  } else if (board[7] + board[8] + board[9] + board[10] + board[11] + board[12] === 0) {
+    getWinner();
   } else {
     var seedIndex = (Math.floor((Math.random() * 6) + 7))
     invalidMove(seedIndex);
