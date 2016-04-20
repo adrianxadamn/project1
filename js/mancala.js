@@ -1,4 +1,4 @@
-var board = [4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 0];
+var board = [4, 4, 4, 4, 4, 4, 0, 1, 0, 0, 0, 0, 15, 0];
 var gameOver = false;
 var turn = "player1";
 var seedsInHand = 0;
@@ -94,6 +94,18 @@ var playerAi = function() {
     invalidMove(8);
   } else if (board[7] === 6) {
     invalidMove(7);
+  } else if (board[7] >= board[8] + board[9] + board[10] + board[11] + board[12]) {
+    invalidMove(7);
+  } else if (board[8] >= board[7] + board[9] + board[10] + board[11] + board[12]) {
+    invalidMove(8);
+  } else if (board[9] >= board[8] + board[7] + board[10] + board[11] + board[12]) {
+    invalidMove(9);
+  } else if (board[10] >= board[8] + board[9] + board[7] + board[11] + board[12]) {
+    invalidMove(10);
+  } else if (board[11] >= board[8] + board[9] + board[10] + board[7] + board[12]) {
+    invalidMove(11);
+  } else if (board[12] >= board[8] + board[9] + board[10] + board[11] + board[7]) {
+    invalidMove(12);
   } else if (board[7] === 1 && board[8] === 0) {
     invalidMove(7);
   } else if (board[7] === 2 && board[9] === 0) {
@@ -122,20 +134,8 @@ var playerAi = function() {
     invalidMove(10);
   } else if (board[10] === 2 && board[12] === 0) {
     invalidMove(10);
-  } else if (board[11] === 1 && board[8] === 0) {
+  } else if (board[11] === 1 && board[12] === 0) {
     invalidMove(11);
-  } else if (board[7] >= board[8] + board[9] + board[10] + board[11] + board[12]) {
-    invalidMove(7);
-  } else if (board[8] >= board[7] + board[9] + board[10] + board[11] + board[12]) {
-    invalidMove(8);
-  } else if (board[9] >= board[8] + board[7] + board[10] + board[11] + board[12]) {
-    invalidMove(9);
-  } else if (board[10] >= board[8] + board[9] + board[7] + board[11] + board[12]) {
-    invalidMove(10);
-  } else if (board[11] >= board[8] + board[9] + board[10] + board[7] + board[12]) {
-    invalidMove(11);
-  } else if (board[12] >= board[8] + board[9] + board[10] + board[11] + board[7]) {
-    invalidMove(12);
   } else if (board[12] >= 8 && board[7] === 0) {
     invalidMove(12);
   } else if (board[11] >= 9 && board[7] === 0) {
