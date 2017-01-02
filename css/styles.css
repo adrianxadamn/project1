@@ -87,25 +87,21 @@ h1:hover {
 }
 
 .newGameClass {
-  text-align: center;
-  clear: both;
-  padding-top:50px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: auto;
+  padding-top: 50px;
 }
 
 #newGameId {
-  margin: 3px auto;
-  margin-right: 50px;
-  margin-left:-52px;
+  margin-left: 0;
 }
 
 #newGameId:hover {
   background-color: yellow;
   border-color: yellow ;
   box-shadow: 0px 0px 100px #fff;
-}
-
-#pauseMusic {
-  margin: 3px auto;
 }
 
 #pauseMusic:hover{
@@ -139,9 +135,10 @@ h1:hover {
 }
 
 .main {
-  margin: 55px auto;
-  width: 1179px;
-  height:450px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-top: 55px;
 }
 
 .points1, .points2 {
