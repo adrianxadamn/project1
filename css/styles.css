@@ -4,6 +4,74 @@ body {
   background-repeat: repeat-y;
 }
 
+.main {
+  display: flex;
+  /*flex-wrap: wrap;*/
+  justify-content: center;
+  padding-top: 55px;
+  position: relative;
+}
+
+.wrapper {
+/*  margin-left: 165px;*/
+  border: 7px solid teal;
+  width: 794px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.row1, .row2, .row3 {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.row2 {
+  position: relative;
+}
+
+.cell1, .cell2 {
+  margin: 10px 10px;
+  border: 7px solid teal;
+  padding: 15px;
+  height: 85px;
+  max-width: 65px;
+  width: 16.66%;
+  background-color: teal;
+  color: black;
+  display: inline-block;
+  font-weight: bold;
+  font-size: 60px;
+  background-clip: content-box;
+  text-align: center;
+  font-family:'Righteous', cursive;
+}
+
+.points2 {
+  color: red;
+  font-size: 200px;
+  width:150px;
+  font-family:'Righteous', cursive;
+  text-align:center;
+  position:absolute;
+}
+
+.points1 {
+  color: yellow;
+  font-size: 200px;
+  width:150px;
+  font-family:'Righteous', cursive;
+  position: absolute;
+}
+
+.points1, .points2 {
+  padding-top: 120px;
+}
+
+.row2 {
+  height: 194px;
+}
+
 .store1 {
   margin: 10px 10px;
   border: 7px solid yellow;
@@ -18,9 +86,6 @@ body {
   text-align: center;
   font-family:'Righteous', cursive;
   display: inline-block;
-  position: relative;
-  left: 665px;
-  bottom: 144px;
 }
 
 .store2 {
@@ -39,29 +104,9 @@ body {
   float: left;
 }
 
-.cell1, .cell2 {
-  margin: 10px 10px;
-  border: 7px solid teal;
-  padding: 15px;
-  height: 85px;
-  width: 65px;
-  background-color: teal;
-  color: black;
-  display: inline-block;
-  font-weight: bold;
-  font-size: 60px;
-  background-clip: content-box;
-  text-align: center;
-  font-family:'Righteous', cursive;
-}
-
-.row2 {
-  height: 194px;
-}
-
 .text {
-  position: relative;
-  left: 23px;
+  padding-left: 23px;
+  padding-right: 8px;
 }
 
 span {
@@ -108,40 +153,5 @@ h1:hover {
   background-color: yellow;
   border-color: yellow ;
   box-shadow: 0px 0px 100px #fff;
-}
-
-.points2 {
-  color: red;
-  font-size: 200px;
-  width:150px;
-  font-family:'Righteous', cursive;
-  text-align:center;
-  position:absolute;
-}
-
-.points1 {
-  color: yellow;
-  font-size: 200px;
-  width:150px;
-  font-family:'Righteous', cursive;
-  float: left;
-}
-
-.wrapper {
-  margin-left: 165px;
-  border: 7px solid teal;
-  width: 794px;
-  float: left;
-}
-
-.main {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  padding-top: 55px;
-}
-
-.points1, .points2 {
-  padding-top: 120px;
 }
 
