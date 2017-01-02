@@ -22,38 +22,12 @@ if (computer.toLowerCase() === "yes") {
 
 askUser();
 
-var borderPixel = '';
-
-if ($(window).width() > 870) {
-  var borderPixel = "7px";
-  $('.cell1, .cell2').css('border', '7px solid teal');
-} else if ($(window).width() > 550) {
-  var borderPixel = "5px";
-  $('.cell1, .cell2').css('border', '5px solid teal');
-} else {
-  var borderPixel = "3px";
-  $('.cell1, .cell2').css('border', '3px solid teal');
-}
-
-$(window).resize(function() {
-  if ($(window).width() > 870) {
-    var borderPixel = "7px";
-    $('.cell1, .cell2').css('border', '7px solid teal');
-  } else if ($(window).width() > 550) {
-    var borderPixel = "5px";
-    $('.cell1, .cell2').css('border', '5px solid teal');
-  } else {
-    var borderPixel = "3px";
-    $('.cell1, .cell2').css('border', '3px solid teal');
-  }
-});
-
 //restarts Game
 /////////////
 $("#newGameId").on("click", function(event) {
   board = [4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 0];
   turn = "player1"
-  turnBox.html("Turn: Player 1").css({color: "yellow"}).css({border: borderPixel + " solid teal"})
+  turnBox.html("Turn: Player 1").css({color: "yellow"}).css({border: "7px solid teal"})
   clearTimeout(move);
   render();
 });
@@ -341,13 +315,13 @@ function getWinner(){
 
 function winnerIs(){
   if (board[6] > board[13]) {
-    turnBox.html("Player 1 Wins!").css({color: "yellow"}).css({border: borderPixel + " solid yellow"})
+    turnBox.html("Player 1 Wins!").css({color: "yellow"}).css({border: "7px solid yellow"})
     playWinnerSound();
   } else if(board[6] < board[13]) {
-    turnBox.html("Player 2 Wins!").css({color: "yellow"}).css({border: borderPixel + " solid yellow"})
+    turnBox.html("Player 2 Wins!").css({color: "yellow"}).css({border: "7px solid yellow"})
     playWinnerSound();
   } else {
-    turnBox.html("DRAW!").css({color: "teal"}).css({border: borderPixel + " solid teal"})
+    turnBox.html("DRAW!").css({color: "teal"}).css({border: "7px solid teal"})
   }
 };
 
@@ -409,27 +383,27 @@ function changeHoverColor() {
 if (turn === "player1") {
   $(".cell2").off('mouseenter mouseleave');
   playHoverSound();
-  $(".cell2").css("background-color", "teal").css({border: borderPixel + " solid teal"}).css("box-shadow", "0px 0px 0px")
+  $(".cell2").css("background-color", "teal").css({border: "7px solid teal"}).css("box-shadow", "0px 0px 0px")
   playerOneHover();
 } else if (turn === "player2"){
   $(".cell1").off('mouseenter mouseleave');
   playHoverSound();
-  $(".cell1").css("background-color", "teal").css({border: borderPixel + " solid teal"}).css("box-shadow", "0px 0px 0px")
+  $(".cell1").css("background-color", "teal").css({border: "7px solid teal"}).css("box-shadow", "0px 0px 0px")
   playerTwoHover();
 }};
 
 function playerOneHover() {
   $(".cell1").hover(function(){
-    $(this).css("background-color", "yellow").css({border: borderPixel + " solid yellow"}).css("box-shadow", "0px 0px 100px #fff")
+    $(this).css("background-color", "yellow").css({border: "7px solid yellow"}).css("box-shadow", "0px 0px 100px #fff")
   }, function () {
-    $(this).css("background-color", "teal").css({border: borderPixel + " solid teal"}).css("box-shadow", "0px 0px 0px")
+    $(this).css("background-color", "teal").css({border: "7px solid teal"}).css("box-shadow", "0px 0px 0px")
   });
 }
 function playerTwoHover() {
   $(".cell2").hover(function(){
-    $(this).css("background-color", "red").css({border: borderPixel + " solid red"}).css("box-shadow", "0px 0px 100px #fff")
+    $(this).css("background-color", "red").css({border: "7px solid red"}).css("box-shadow", "0px 0px 100px #fff")
   }, function () {
-    $(this).css("background-color", "teal").css({border: borderPixel + " solid teal"}).css("box-shadow", "0px 0px 0px")
+    $(this).css("background-color", "teal").css({border: "7px solid teal"}).css("box-shadow", "0px 0px 0px")
   });
 }
 

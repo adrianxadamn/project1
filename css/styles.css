@@ -4,76 +4,6 @@ body {
   background-repeat: repeat-y;
 }
 
-.main {
-  display: flex;
-  /*flex-wrap: wrap;*/
-  justify-content: center;
-  padding-top: 55px;
-  position: relative;
-}
-
-.wrapper {
-/*  margin-left: 165px;*/
-  border: 7px solid teal;
-  width: 775px;
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.row1, .row2, .row3 {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.row2 {
-  position: relative;
-}
-
-.cell1, .cell2 {
-  margin: 10px 10px;
-  border: 7px solid teal;
-  padding: 15px;
-  height: 85px;
-  max-width: 65px;
-  width: 16.66%;
-  background-color: teal;
-  color: black;
-  display: inline-block;
-  font-weight: bold;
-  font-size: 60px;
-  background-clip: content-box;
-  text-align: center;
-  font-family:'Righteous', cursive;
-}
-
-.points2 {
-  color: red;
-  font-size: 200px;
-  width: 150px;
-  font-family:'Righteous', cursive;
-  text-align: center;
-  position: absolute;
-  left: 70px;
-}
-
-.points1 {
-  color: yellow;
-  font-size: 200px;
-  width: 150px;
-  font-family:'Righteous', cursive;
-  position: absolute;
-  right: 70px;
-}
-
-.points1, .points2 {
-  padding-top: 120px;
-}
-
-.row2 {
-  height: 194px;
-}
-
 .store1 {
   margin: 10px 10px;
   border: 7px solid yellow;
@@ -88,6 +18,9 @@ body {
   text-align: center;
   font-family:'Righteous', cursive;
   display: inline-block;
+  position: relative;
+  left: 665px;
+  bottom: 144px;
 }
 
 .store2 {
@@ -106,9 +39,29 @@ body {
   float: left;
 }
 
+.cell1, .cell2 {
+  margin: 10px 10px;
+  border: 7px solid teal;
+  padding: 15px;
+  height: 85px;
+  width: 65px;
+  background-color: teal;
+  color: black;
+  display: inline-block;
+  font-weight: bold;
+  font-size: 60px;
+  background-clip: content-box;
+  text-align: center;
+  font-family:'Righteous', cursive;
+}
+
+.row2 {
+  height: 194px;
+}
+
 .text {
-  padding-left: 23px;
-  padding-right: 8px;
+  position: relative;
+  left: 23px;
 }
 
 span {
@@ -134,15 +87,15 @@ h1:hover {
 }
 
 .newGameClass {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin: auto;
-  padding-top: 50px;
+  text-align: center;
+  clear: both;
+  padding-top:50px;
 }
 
 #newGameId {
-  margin-left: 0;
+  margin: 3px auto;
+  margin-right: 50px;
+  margin-left:-52px;
 }
 
 #newGameId:hover {
@@ -151,121 +104,47 @@ h1:hover {
   box-shadow: 0px 0px 100px #fff;
 }
 
+#pauseMusic {
+  margin: 3px auto;
+}
+
 #pauseMusic:hover{
   background-color: yellow;
   border-color: yellow ;
   box-shadow: 0px 0px 100px #fff;
 }
 
-@media only screen and (max-width: 870px) {
-  .cell1, .cell2 {
-    margin: 5px;
-    border: 5px solid teal;
-    padding: 10px;
-    height: 60px;
-    max-width: 40px;
-    width: 16.66%;
-    font-size: 45px;
-  }
-
-  .wrapper {
-    border: 5px solid teal;
-    width: 480px;
-  }
-
-  .store1 {
-    margin: 5px;
-    border: 5px solid yellow;
-    padding: 10px;
-    height: 60px;
-    width: 40px;
-    font-size: 45px;
-  }
-
-  .store2 {
-    margin: 5px;
-    border: 5px solid red;
-    padding: 10px;
-    height: 60px;
-    width: 40px;
-    font-size: 45px;
-  }
-
-  .text {
-    padding-left: 14px;
-    padding-right: 14px;
-  }
-
-  span {
-    font-size: 40px;
-    border: 5px solid teal;
-    padding: 0px 25px;
-    margin-left: 15px;
-  }
-
-  h1 {
-    font-size: 48px;
-  }
-
-  .row2 {
-    height: 125px;
-  }
-
+.points2 {
+  color: red;
+  font-size: 200px;
+  width:150px;
+  font-family:'Righteous', cursive;
+  text-align:center;
+  position:absolute;
 }
 
-
-@media only screen and (max-width: 550px) {
-  .cell1, .cell2 {
-    margin: 3px;
-    border: 3px solid teal;
-    padding: 5px;
-    height: 40px;
-    max-width: 25px;
-    width: 16.66%;
-    font-size: 30px;
-  }
-
-  .wrapper {
-    border: 3px solid teal;
-    width: 282px;
-  }
-
-  .store1 {
-    margin: 3px;
-    border: 3px solid yellow;
-    padding: 5px;
-    height: 40px;
-    width: 25px;
-    font-size: 30px;
-  }
-
-  .store2 {
-    margin: 3px;
-    border: 3px solid red;
-    padding: 5px;
-    height: 40px;
-    width: 25px;
-    font-size: 30px;
-  }
-
-  .text {
-    padding-left: 9px;
-    padding-right: 9px;
-  }
-
-  span {
-    font-size: 20px;
-    border: 3px solid teal;
-    padding: 0px 25px;
-    margin-left: 8px;
-  }
-
-  h1 {
-    font-size: 28px;
-  }
-
-  .row2 {
-    height: 70px;
-  }
-
+.points1 {
+  color: yellow;
+  font-size: 200px;
+  width:150px;
+  font-family:'Righteous', cursive;
+  float: left;
 }
+
+.wrapper {
+  margin-left: 165px;
+  border: 7px solid teal;
+  width: 794px;
+  float: left;
+}
+
+.main {
+  margin: 55px auto;
+  width: 1179px;
+  height:450px;
+}
+
+.points1, .points2 {
+  padding-top: 120px;
+}
+
